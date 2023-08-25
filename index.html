@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./style/style.css">
+  <link rel="stylesheet" href="./style/form.css">
+  <link rel="stylesheet" href="./style/botao.css">
+  <link rel="stylesheet" href="./style/inputs.css">
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery.maskedinput/1.4.1/jquery.maskedinput.min.js"></script>
+  <title>Formulário Multi-Step</title>
+</head>
+<body>
+  <div id="container" >
+    <header class="titulo-form">Formulário de Agendamento</header>
+    <div class="form-solicitacao">
+      <form action="#">
+        <div class="page-solicitacao">
+          <img class="logo-moby" src="./img/Moby_Logo04.png" width="190px" height="70px">
+          <div class="title">Informações do solicitante</div>
+          <div class="field">
+            <label>Nome</label>
+            <input type="text" placeholder="Nome do solicitante" required>
+            <span class="mensagem-erro"></span>
+          </div>
+          <div class="field">
+            <label>E-mail</label>
+            <input type="email" placeholder="E-mail do solicitante" required>
+            <span class="mensagem-erro"></span>
+          </div>
+          <div class="field">
+            <label>CNPJ do Transportador</label>
+            <input name="cnpj" type="text" id="cnpj" placeholder="00.000.000/0000-00" minlength="14" maxlength="18" pattern="\d{2}\.?\d{3}.?\d{3}\/?\d{4}-?\d{2}" required>
+            <span class="mensagem-erro"></span>
+          </div>
+          <div class="field">
+            <label>Nome Transportador</label>
+            <input type="text" id="nome-transportador" placeholder="Nome do Transportador" required>
+            <span class="mensagem-erro"></span>
+          </div>
+          <div class="field">
+            <label>Operação</label>
+            <select id="operacao" name="operacao" required>
+              <option value="" selected disabled>Selecione uma operação</option>
+              <option value="AISUAP">AISUAP</option>
+              <option value="AGEO">AGEO</option>
+              <option value="B100">B100</option>
+              <option value="BACUB">BACUB</option>
+              <option value="Descarga CIF">Descarga CIF</option>
+            </select>
+            <span class="mensagem-erro"></span>
+          </div>
+          <div class="field">
+            <label>Tipo de Agendamento</label>
+            <select id="tipo-agendamento" name="tipo-agendamento" required>
+              <option value="" selected disabled>Selecione um tipo de solicitação</option>
+              <option value="novo agendamento">Nogo agendamento</option>
+              <option value="alteracao">Alteração</option>
+              <option value="troca de nf">Troca de NF</option>
+            </select>
+            <span class="mensagem-erro"></span>
+          </div>
+          <div class="field-botao">
+            <button class="next-1 next">Proximo</button>
+          </div>
+        </div>
+
+        <div class="page-novo-agendamento hidden">
+          <div class="title">Informações de carregamento</div>
+          <div class="field">
+            <label>Frota é dedicada?</label>
+            <select id="tipo-frota" name="tipo-frota" required>
+              <option value="" selected disabled>Selecione uma operação</option>
+              <option value="Sim">Sim</option>
+              <option value="Nao">Não</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Produto</label>
+            <select id="produto" name="produto" required>
+              <option value="" selected disabled>Selecione um produto</option>
+              <option value="S10">ÓLEO DIESEL A S10</option>
+              <option value="S50">ÓLEO DIESEL A S50</option>
+              <option value="GASOLINA A COMUM">GASOLINA A COMUM</option>
+              <option value="GASOLINA A PREMIUM">GASOLINA A PREMIUM</option>
+              <option value="PODIUM">PODIUM</option>
+              <option value="AVGAS.100">AVGAS.100</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Origem</label>
+            <select id="origem" name="origem" required>
+              <option value="" selected disabled>Selecione uma origem</option>
+              <option value="AISUAP">AISUAP</option>
+              <option value="BACUB">BACUB</option>
+              <option value="BAMAT">BAMAT</option>
+              <option value="BADUC">BADUC</option>
+              <option value="BAGAM">BAGAM</option>
+              <option value="BASPA">BASPA</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Destino</label>
+            <select id="destino" name="destino" required>
+              <option value="" selected disabled>Selecione um destino</option>
+              <option value="AISUAP">AISUAP</option>
+              <option value="BACUB">BACUB</option>
+              <option value="BAMAT">BAMAT</option>
+              <option value="BADUC">BADUC</option>
+              <option value="BAGAM">BAGAM</option>
+              <option value="BASPA">BASPA</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Data e hora de carregamento</label>
+            <input type="datetime-local">
+          </div>
+          <div class="field">
+            <label>Data e hora de descarga</label>
+            <input type="datetime-local">
+          </div>
+          <div class="field">
+            <label>Tipo de veiculo</label>
+            <select id="tipo-veiculo" name="tipo-veiculo" required>
+              <option value="" selected disabled>Selecione uma opção</option>
+              <option value="Rodotrem">Rodotrem</option>
+              <option value="Bitrem">Bitrem</option>
+              <option value="Vanderleia">Vanderléia</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Placa do cavalo</label>
+            <input type="text" maxlength="7">
+          </div>
+          <div class="field">
+            <label>Placa do 1ª carreta</label>
+            <input type="text" maxlength="7">
+          </div>
+          <div class="field">
+            <label>Placa do 2ª carreta</label>
+            <input type="text" maxlength="7">
+          </div>
+          <div class="field">
+            <label>Seta da 1ª carreta</label>
+            <input type="number" maxlength="5">
+          </div>
+          <div class="field">
+            <label>Seta da 2ª carreta</label>
+            <input type="number">
+          </div>
+          <div class="field">
+            <label>Nome do motorista</label>
+            <input type="text">
+          </div>
+          <div class="field">
+            <label>CPF do motorista</label>
+            <input type="text" maxlength="14">
+          </div>
+          <div class="field">
+            <label>RG do motorista</label>
+            <input type="text" maxlength="14">
+          </div>
+          <div class="field">
+            <label>CNH do motorista</label>
+            <input type="text" maxlength="14">
+          </div>
+          <div class="field-botao">
+            <button class="prev-1 prev">Anterior</button>
+            <button class="submit">Enviar</button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <!-- <div class="container">
+    <h2>Formulário Agendamento</h2>
+    <form id="form-solicitacao" class="form-step visible-step">
+      <div class="form-group">
+        <label for="operacao">Operação*</label>
+        <select id="operacao" name="operacao" required>
+          <option value="" selected disabled>Selecione uma operação</option>
+          <option value="AISUAP">AISUAP</option>
+          <option value="AGEO">AGEO</option>
+          <option value="B100">B100</option>
+          <option value="BACUB">BACUB</option>
+          <option value="Descarga CIF">Descarga CIF</option>
+        </select>
+        <span class="error-message">Campo obrigatório!</span>
+      </div>
+      <div class="form-group">
+        <label for="nome">Nome*</label>
+        <input type="text" id="nome" name="nome" required>
+        <span class="error-message">Campo obrigatório!</span>
+      </div>
+      <div class="form-group">
+        <label for="email">E-mail*</label>
+        <input type="email" id="email" name="email" required>
+        <span class="error-message">Campo obrigatório!</span>
+      </div>
+      <div class="form-group">
+        <label for="cnpj">CNPJ*</label>
+        <input type="text" id="cnpj" name="cnpj" required>
+        <span class="error-message">Campo obrigatório!</span>
+      </div>
+      <div class="form-group">
+        <label for="tipo-solicitacao">Tipo de solicitação*</label>
+        <select id="tipo-solicitacao" name="tipo-solicitacao" required>
+          <option value="" selected disabled>Selecione um tipo de solicitação</option>
+          <option value="Novo Agendamento">Novo Agendamento</option>
+          <option value="Alteração">Alteração</option>
+        </select>
+        <span class="error-message">Campo obrigatório!</span>
+      </div>
+      <div class="form-group">
+        <button type="button" class="next-button" onclick="nextStep(0)">Próximo</button>
+      </div>
+    </form>
+
+    <form id="form-novo-agendamento" class="form-step" novalidate>
+      <div class="form-group">
+        <label for="origem">Origem*</label>
+        <input type="text" id="origem" name="origem" required>
+        <span class="error-message">Campo obrigatório!</span>
+      </div>
+      <div class="form-group">
+        <label for="destino">Destino*</label>
+        <input type="text" id="destino" name="destino" required>
+        <span class="error-message">Campo obrigatório!</span>
+      </div>
+      <div class="form-group">
+        <label for="data-hora-agenda">Data e hora da agenda*</label>
+        <input type="datetime-local" id="data-hora-agenda" name="data-hora-agenda" required>
+        <span class="error-message">Campo obrigatório!</span>
+      </div>
+      <div class="form-group">
+        <label for="produto">Produto*</label>
+        <select id="produto" name="produto" required>
+          <option value="" selected disabled>Selecione um produto</option>
+          <option value="S10">S10</option>
+          <option value="GASOLINA">GASOLINA</option>
+          <option value="HIDRATADO">HIDRATADO</option>
+          <option value="ANIDRO">ANIDRO</option>
+          <option value="B100">B100</option>
+        </select>
+        <span class="error-message">Campo obrigatório!</span>
+      </div>
+      <div class="form-group">
+        <label for="tipo-veiculo">Tipo de veículo*</label>
+        <select id="tipo-veiculo" name="tipo-veiculo" required>
+          <option value="" selected disabled>Selecione um tipo de veículo</option>
+          <option value="BITREM">BITREM</option>
+          <option value="RODOTREM">RODOTREM</option>
+          <option value="VANDERLEIA">VANDERLEIA</option>
+        </select>
+        <span class="error-message">Campo obrigatório!</span>
+      </div>
+      <div class="form-group">
+        <label for="cavalo">Cavalo*</label>
+        <input type="text" id="cavalo" name="cavalo" required>
+        <span class="error-message">Campo obrigatório!</span>
+      </div>
+      <div class="form-group">
+        <label for="carreta1">Carreta 1*</label>
+        <input type="text" id="carreta1" name="carreta1" required>
+        <span class="error-message">Campo obrigatório!</span>
+      </div>
+      <div class="form-group">
+        <label for="carreta2">Carreta 2</label>
+        <input type="text" id="carreta2" name="carreta2">
+      </div>
+      <div class="form-group">
+        <label for="seta1">Seta 1*</label>
+        <input type="number" id="seta1" name="seta1" required>
+        <span class="error-message">Campo obrigatório!</span>
+      </div>
+      <div class="form-group">
+        <label for="seta2">Seta 2</label>
+        <input type="number" id="seta2" name="seta2">
+      </div>
+      <div class="form-group">
+        <button type="button" class="prev-button" onclick="prevStep(1)">Voltar</button>
+        <button type="button" class="next-button" onclick="saveForm(1)">Salvar</button>
+      </div>
+    </form>
+
+    <form id="form-alteracao" class="form-step" novalidate>
+      <div class="form-group">
+        <label for="destino-alteracao">Destino</label>
+        <input type="text" id="destino-alteracao" name="destino-alteracao">
+      </div>
+      <div class="form-group">
+        <label for="data-hora-agenda-alteracao">Data e hora da agenda</label>
+        <input type="datetime-local" id="data-hora-agenda-alteracao" name="data-hora-agenda-alteracao">
+      </div>
+      <div class="form-group">
+        <label for="produto-alteracao">Produto</label>
+        <select id="produto-alteracao" name="produto-alteracao">
+          <option value="" selected disabled>Selecione um produto</option>
+          <option value="S10">S10</option>
+          <option value="GASOLINA">GASOLINA</option>
+          <option value="HIDRATADO">HIDRATADO</option>
+          <option value="ANIDRO">ANIDRO</option>
+          <option value="B100">B100</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="tipo-veiculo-alteracao">Tipo de veículo</label>
+        <select id="tipo-veiculo-alteracao" name="tipo-veiculo-alteracao">
+          <option value="" selected disabled>Selecione um tipo de veículo</option>
+          <option value="BITREM">BITREM</option>
+          <option value="RODOTREM">RODOTREM</option>
+          <option value="VANDERLEIA">VANDERLEIA</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="cavalo-alteracao">Cavalo</label>
+        <input type="text" id="cavalo-alteracao" name="cavalo-alteracao">
+      </div>
+      <div class="form-group">
+        <label for="carreta1-alteracao">Carreta 1</label>
+        <input type="text" id="carreta1-alteracao" name="carreta1-alteracao">
+      </div>
+      <div class="form-group">
+        <label for="carreta2-alteracao">Carreta 2</label>
+        <input type="text" id="carreta2-alteracao" name="carreta2-alteracao">
+      </div>
+      <div class="form-group">
+        <label for="seta1-alteracao">Seta 1</label>
+        <input type="number" id="seta1-alteracao" name="seta1-alteracao">
+      </div>
+      <div class="form-group">
+        <label for="seta2-alteracao">Seta 2</label>
+        <input type="number" id="seta2-alteracao" name="seta2-alteracao">
+      </div>
+      <div class="form-group">
+        <button type="button" class="prev-button" onclick="prevStep(2)">Voltar</button>
+        <button type="button" class="next-button" onclick="saveForm(2)">Salvar</button>
+      </div>
+    </form>
+
+    <div id="error-message" class="error-message"></div>
+
+  </div> -->
+  <script src="./js/script.js"></script>
+  <script src="./js/botaoNextPrev.js"></script>
+</body>
+</html>

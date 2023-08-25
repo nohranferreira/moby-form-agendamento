@@ -1,0 +1,40 @@
+.titulo-form {
+    text-align: center;
+    padding: 2rem 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.logo-moby {
+    margin-top: 1rem;
+}
+
+.title {
+    padding: 2rem 0;
+}
+
+.form-solicitacao {
+    width: 100%;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #fff;
+}
+
+.page-solicitacao, .page-novo-agendamento {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #000;
+    border-radius: 20px;
+    box-shadow: 5px 5px 15px #000;
+    background-color: #091625;
+}
+
+.hidden {
+    display: none;
+}
