@@ -13,7 +13,7 @@
     padding: 0.5rem 6rem;
     border: none;
     border-radius: 10px;
-    background-color: #f8cc4e ;
+    background-color: #ffc000 ;
     color: #000;
     font-weight: bold;
     cursor: pointer;
@@ -24,16 +24,16 @@
 }
 
 .next-1.next:hover {
-    background-color: #f00; /* Cor de fundo desejada ao passar o cursor */
+    background-color: #5b9bd5; /* Cor de fundo desejada ao passar o cursor */
     color: #fff; /* Cor do texto desejada ao passar o cursor */
 }
 
 .prev-1.prev:hover {
-    background-color: #f00; /* Cor de fundo desejada ao passar o cursor */
+    background-color: #5b9bd5; /* Cor de fundo desejada ao passar o cursor */
     color: #fff; /* Cor do texto desejada ao passar o cursor */
 }
 
 .submit:hover {
-    background-color: #f00; /* Cor de fundo desejada ao passar o cursor */
+    background-color: #5b9bd5; /* Cor de fundo desejada ao passar o cursor */
     color: #fff; /* Cor do texto desejada ao passar o cursor */
 }
